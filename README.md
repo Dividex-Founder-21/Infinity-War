@@ -1,2 +1,2 @@
-# Dividex-Core
-Core Smart Contracts for Dividex 
+# Infinity-War
+Creating smart contracts to fight Thanos
