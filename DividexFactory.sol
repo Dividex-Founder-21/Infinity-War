@@ -11,8 +11,6 @@ contract DividexFactory is IDividexFactory{ //will include "is IDividexFactory o
     mapping(address => mapping(address => mapping(uint32 => address))) public getPair; //needs to be modified to include baseFee
     address[] public allPairs; //array with all addresses of pairs
 
-    event PairCreated(address indexed token0, address indexed token1, uint32 baseFee, address pair, uint); //event emitted when new pair exchange created
-
     constructor(uint _maxFee) public {
         maxFee = _maxFee;
     } //will be modified later when we consider possible state variable
@@ -28,7 +26,7 @@ contract DividexFactory is IDividexFactory{ //will include "is IDividexFactory o
     //baseFee set up as int that can range from 0 to 10000 (exclusive) so lowest fee is 0.01% and highest is 99.99%
     function createPair(address tokenA, address tokenB, uint32 baseFee) external returns (address pair) {//base fee added
         uint32 _baseFee = baseFee; //save gas
-        require(_baseFee > 0 && _baseFee < 10000, 'Dividex: Fee Invalid');
+        require(_baseFee > 0 && _baseFee < maxFee, 'Dividex: Fee Invalid');
         require(tokenA != tokenB, 'Dividex: IDENTICAL_ADDRESSES');
         (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
         require(token0 != address(0), 'Dividex: ZERO_ADDRESS');
