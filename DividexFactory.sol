@@ -11,7 +11,7 @@ contract DividexFactory is IDividexFactory{ //will include "is IDividexFactory o
     mapping(address => mapping(address => mapping(uint32 => address))) public getPair; //needs to be modified to include baseFee
     address[] public allPairs; //array with all addresses of pairs
 
-    constructor(uint _maxFee) public {
+    constructor(uint _maxFee) {
         maxFee = _maxFee;
     } //will be modified later when we consider possible state variable
 

@@ -32,6 +32,7 @@ interface IDividexPair {
         address indexed to
     );
     event Sync(uint112 reserve0, uint112 reserve1);
+    event feeDisburse0(address indexed sender, uint amount0, uint amount1, address indexed to);
 
     function MINIMUM_LIQUIDITY() external pure returns (uint);
     function factory() external view returns (address);
@@ -45,6 +46,8 @@ interface IDividexPair {
     function mint(address to) external returns (uint liquidity);
     function burn(address to) external returns (uint amount0, uint amount1);
     function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function feeDist(uint fee, bool coin) external returns (uint lpReward, uint divReward);
+    function feedisburse(address to, uint amountOut0, uint amountOut1, uint totalFeesOwed0, uint totalFeesOwed1) external;
     function skim(address to) external;
     function sync() external;
 
