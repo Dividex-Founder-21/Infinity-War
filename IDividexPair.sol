@@ -43,7 +43,7 @@ interface IDividexPair {
     uint112 _liability0, uint112 _liability1);
     
 
-    function mint(address to) external returns (uint liquidity);
+    function mint(address to) external returns (uint liquidity0, uint liquidity1);
     function burn(address to) external returns (uint amount0, uint amount1);
     function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
     function feeDist(uint fee, bool coin) external returns (uint lpReward, uint divReward);
